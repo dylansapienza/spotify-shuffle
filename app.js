@@ -13,6 +13,8 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
+const PORT = process.env.PORT
+
 var client_id = 'ee9126ecf55b4ee6be9cb1a72bc46c92'; // Your client id
 var client_secret = '6b2c3411eaa84cb086a3d3e71385e5f4'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
@@ -164,4 +166,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(PORT);
