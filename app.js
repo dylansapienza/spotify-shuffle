@@ -147,7 +147,7 @@ app.get('/refresh_token', function(req, res) {
 
 app.get('/testAPI', function(req, res){
   res.send("The API is working properly");
-})
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(
