@@ -10,8 +10,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Route exact path = "/" component={Home}/>
-      <Route exact path = "/stevebuschemi" component={Steve}/>
+      <Route exact path = "/home" component={Home}/>
+      <Route exact = "/stevebuschemi" component={Steve}/>
     </BrowserRouter>
   );
 }
