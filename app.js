@@ -108,7 +108,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/shuffle' +
+        res.redirect('/shuffle?' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
@@ -150,6 +150,28 @@ app.get('/refresh_token', function(req, res) {
 app.get('/testAPI', function(req, res){
   res.send("The API is working properly");
 });
+
+app.post('/api/getPlaylists', async(req, res) =>{
+  const access_token = req.body.access_token;
+
+  var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + access_token
+  };
+  var options = {
+      url: 'https://api.spotify.com/v1/me/playlists',
+      headers: headers
+  };
+  function callback(error, response, body) {
+      if (!error && response.statusCode == 200) {
+          console.log(body);
+      }
+  }
+  request(options, callback);
+
+})
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(
